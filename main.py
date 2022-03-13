@@ -79,7 +79,7 @@ for i in range(len(files)):
     img2 = resize_img(img2,w,h)
     img2 = ImageTk.PhotoImage(img2)
     canvas.itemconfig(item,image=img2)
-    for j in range(int(time_list[i]),-1,-1):
+    for j in range(int(time_list[i])*60,-1,-1):
         time.sleep(1)
         label['text'] = str(j)
     for ij in range(4,-1,-1):

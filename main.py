@@ -6,6 +6,7 @@ from PIL import Image, ImageTk
 import threading
 from glob import glob
 import time
+import random
 
 files = glob("./img/*.*")
 start_img = "./source/start.jpg"
@@ -74,12 +75,15 @@ for j in range(10,-1,-1):
         time.sleep(1)
         label['text'] = str(j)
 
-for i in range(len(files)):
+l = list(range(len(files)))
+random.shuffle(l)
+
+for num,i in enumerate(l):
     img2 = Image.open(files[i])
     img2 = resize_img(img2,w,h)
     img2 = ImageTk.PhotoImage(img2)
     canvas.itemconfig(item,image=img2)
-    for j in range(int(time_list[i])*60,-1,-1):
+    for j in range(int(time_list[num]),-1,-1):
         time.sleep(1)
         label['text'] = str(j)
     for ij in range(4,-1,-1):
